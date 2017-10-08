@@ -5,24 +5,36 @@ import java.io.*;
 public class Parser {
 
    public static void main(String[] args) {
-      
+	   String filename;
+	   int numFiles = 0;		// To Count Number of files
+	   
+	   do
+	   {
+	   if(args.length == 0) // No arguments, file to be inputted
+	   {
 		Scanner keyboard = new Scanner(System.in);
-		
 		System.out.println("File name:");
-		String filename = keyboard.next();
+		filename = keyboard.next();
+		keyboard.close();
+	   }
+	   else		// Files given in Arguments 
+	   {
+		   filename = args[numFiles];
+	   }
+	   
+	   
 		Block code = new Block();
 		
 		File f = new File(filename);
 	    Scanner scan = null;
-      try {
+      try {								// Grab File from System
          scan = new Scanner(f);
       } catch (FileNotFoundException e) {
-         // TODO Auto-generated catch block
          System.out.println("Invalid File Name");
          e.printStackTrace();
       }
       
-	    int maxLine = 0;
+	    int maxLine = 0;				// Count number of lines in the file
         
 	      // Add all lines to code Array
 	    while(scan.hasNextLine()) {
@@ -34,7 +46,7 @@ public class Parser {
 	    
 	      System.out.println("Max: "+maxLine);
 	      scan.close();
-	      keyboard.close();
+	      
 	    
        String error = "Error at Line number "; 
        
@@ -67,7 +79,11 @@ public class Parser {
           
           }
 
-       }   
+       }
+       
+       numFiles++;
+       
+	   }while(numFiles < args.length);
 
 	}
    
