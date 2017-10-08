@@ -1,0 +1,75 @@
+/*
+Mark Huntington
+Blank spaces
+Lines 45, 61, and 66 do not follow single space method standard.
+*/
+import java.util.*;
+
+public class TriangleMethod
+{ 
+  static Scanner console = new Scanner(System.in);
+  
+  public static void main (String [] args) throws Exception
+  { 
+    double num1, num2, num3;  
+    double Area; 
+    double Perimeter; 
+   
+    
+    explain();
+    
+    System.out.println("Input your first side.");  
+    num1 = getSide();
+    System.out.println("Input your second side.");
+    num2 = getSide();
+    System.out.println("Input your third side.");
+    num3 = getSide();
+    
+    Perimeter = CalcPerim( num1, num2, num3);
+    
+    Area = CalcArea(num1, num2, num3);
+    
+    outputResults(num1, num2, num3, Perimeter, Area);
+  }
+
+public static void explain()
+{ 
+   System.out.println("This program calculates the perimeter and the area of a triangle.");
+   System.out.println("The sides of the triangle are entered by the user. \n"
+   + "The output is the sides of the triangle, the perimeter and the area. \n"
+   + "Methods are used. \nProgram written by Mark Huntington.");}
+
+
+   
+   
+public static double getSide() throws  Exception
+{
+   double side;     
+   side = console.nextDouble();
+   if (side <= 0)
+   { 
+      System.out.println("This side is invalid");
+      System.exit(0);
+   }
+   return side;
+}
+
+public static double CalcPerim(double num1, double num2, double num3)
+{ 
+   return num1 + num2 + num3;
+}
+public static double CalcArea( double num1, double num2, double num3)
+{ 
+   double S = (num1 + num2 + num3)/2; 
+   return Math.sqrt(S * (S - num1) * (S - num2) * (S - num3));
+} 
+public static void outputResults( double num1, double num2, double num3, 
+   double Perimeter, double Area)
+{ 
+  System.out.print("The area of the triangle with sides " + num1 + ", " + num2 
+  + " and, " + num3 + "\n"
+  + "has a perimeter of " + Perimeter + "\n"
+  + "has an area of " + Area );
+}
+
+}

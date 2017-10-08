@@ -1,0 +1,37 @@
+/**
+ * Jedediah Hernandez
+ * Optional curly braces test program. Errors are on lines 25 and 27 after if statement and before else statement.
+ */
+import java.util.Scanner;
+
+
+public class OptionalCurlyBraces
+{
+
+    public static void main(String[] args)
+    {
+
+        int luckyNumber = 14;
+        int userNumber = 0;
+
+        Scanner keyboardInput = new Scanner(System.in);
+
+        System.out.println("Pick a number from 1 to 20.");
+
+        userNumber = keyboardInput.nextInt();
+
+        while(userNumber < 1 || userNumber > 20)
+        {
+            System.out.println("You did not pick a number between 1 and 20. Please try again.");
+            userNumber = keyboardInput.nextInt();
+        }
+
+        if (userNumber == luckyNumber)
+            System.out.println("Congrats! You picked the lucky number!");
+         else
+            System.out.println("You did not pick the lucky number.");
+
+
+
+    }
+}

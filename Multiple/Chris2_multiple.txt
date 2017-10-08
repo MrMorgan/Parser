@@ -1,0 +1,19 @@
+/* 
+Chris Spaulding
+Indentations
+There should be an indent on the main method
+and and indent on the for loop
+binary opperators no space on line 12 and 16
+*/
+public class Chris_Indents 
+{
+public static void main( String[] args)
+{int k; 
+k=1+1+1;
+for(int i=0;i<10;i++)
+{
+System.out.println(i);
+i=27-i+30;
+}	
+}
+}

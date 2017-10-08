@@ -1,0 +1,16 @@
+/*
+David Aguiar
+Lined Up Braces and capitalization on variables
+Errors should be on lines 12-13 and 14-15
+*/
+
+public class Capitalism
+{
+   public static void main(String[] args) 
+   {
+	   int X = 5;
+	   string ShouldBeLowerCase = "Free Market";
+	   if(X == ShouldBeLowerCase){
+	      System.out.println("Open Trade");}
+}
+}

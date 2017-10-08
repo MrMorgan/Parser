@@ -1,0 +1,52 @@
+/**
+ * Jedediah Hernandez
+ * Multiple errors with case and optional curly braces.
+ * Errors on lines 15, 17, 22, 34, 36, 40, 44, 48.
+ */
+import java.util.Scanner;
+
+public class MultipleError 
+{
+
+    public static void main(String[] args) 
+    {
+
+
+        AM_i_dead();
+
+        Badmethodname();
+
+    }
+
+
+    public static void AM_i_dead() 
+    {
+
+        String userAnswer = " ";
+        boolean alive = true;
+
+        Scanner keyboardInput = new Scanner(System.in);
+        System.out.println("Are you alive? Type yes or no.");
+
+        userAnswer = keyboardInput.nextLine();
+
+        if (userAnswer.equals("yes"))
+            alive = true;
+         else
+            alive = false;
+
+
+        if (alive)
+            System.out.println("Awesome, you're alive!");
+
+
+        if (!alive)
+            System.out.println("Bummer, you are dead.");
+
+    }
+
+    public static void Badmethodname() 
+    {
+        System.out.println("By the way, method names should be lowercase.");
+    }
+}

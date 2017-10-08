@@ -1,0 +1,27 @@
+/*
+James Morgan
+Multiple integers initialized on same line
+*/
+
+public class James_Explicit
+{
+   public static void main(String[] args){
+      int a, b = 2 ,c,d;
+      a = 2 ;
+      b = 4 ;
+      c = 3 ;
+      d = 6 ;
+
+      System.out.println( (a % b) + (c / d) );
+      System.out.println( (b / d) - c + a );
+
+      System.out.println( a - b + c - d);
+      System.out.println( a - (b / c * d) );
+
+      if( a + (d * c) != (d + a) * c )
+      {
+         System.out.println("ok");
+      }
+
+   }
+}

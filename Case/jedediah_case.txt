@@ -1,0 +1,32 @@
+/**
+ * Jedediah Hernandez
+ * Case errors on lines 11, 12, 18, 23, 26.
+ */
+public class Case
+{
+
+    public static void main(String[] args)
+    {
+
+        Bang();
+        new this_class().Boom();
+
+
+    }
+
+
+    public static void Bang()
+    {
+        System.out.println("Bang Bang BOOM!!");
+    }
+
+    public static class this_class
+    {
+
+        public void Boom()
+        {
+            System.out.println("Boom Boom BANG!!");
+        }
+
+    }
+}

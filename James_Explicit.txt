@@ -1,0 +1,27 @@
+/*
+James Morgan
+Explicit operation syntax errors
+Random sets of binary operations with no explicit parenthesis
+*/
+
+public class James_Explicit
+{
+   public static void main(String[] args){
+      int a = 2 ;
+      int b = 4 ;
+      int c = 3 ;
+      int sd = 6 ;
+
+      System.out.println( a % b + c / d );
+      System.out.println( b / d - c + a );
+
+      System.out.println( a - b + c - d);
+      System.out.println( a - b / c * d );
+
+      if( a + d * c != (d + a) * c )
+      {
+         System.out.println("ok");
+      }
+
+   }
+}

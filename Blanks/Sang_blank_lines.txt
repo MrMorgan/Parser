@@ -1,0 +1,52 @@
+/** 
+   Sang Nguyen
+   Blank Lines
+   2 Errors on line 16 and line 28
+*/
+
+
+/** This program is used to calculate the perimeter, semi-perimeter,
+    and the area of a triangle using method.
+*/
+import java.util.Scanner;
+public class BlankLines {
+
+   static Scanner console = new Scanner (System.in);
+   static Toolkit tools = new Toolkit ();  
+   public static void main (String [] args){
+      double num1 = 3;
+      double num2 = 4;
+      double num3 = 5;
+      double area = 0.0;
+      double perimeter = 0.0;
+      perimeter = calcPerimeter(num1, num2, num3);  
+      area = calcArea(num1, num2, num3);  
+      //Output results
+      outputResults(num1,num2,num3,perimeter, area);
+            System.exit(0);
+      }
+     public static double calcPerimeter(double a,double b,double c){
+     return (a + b + c);
+     }//End calcPerimeter
+        
+     //********************************************************************
+     //Calculate area
+     
+     public static double calcArea(double a, double b, double c){
+     double s = 0;
+     s = calcPerimeter(a, b, c) / 2.0;
+      return ( Math.sqrt (s * (s - a) * (s - b) * (s - c)));
+     }//End calcArea
+     
+     //**********************************************************************
+     //Output results
+     
+     public static void outputResults(double num1, double num2, double num3, 
+                                       double area, double perimeter){
+          System.out.println("num1 = " + tools.leftPad(num1, 2, "0.00") +
+								", num2 = " +tools.leftPad(num2, 2, "0.00") +
+								", and num3 = " +tools.leftPad(num3, 2, "0.00") + "\n" +
+								"The perimeter = " +tools.leftPad(perimeter, 2, "0.0") + "\n" +
+								"The area = " +tools.leftPad(area, 2, "0.0"));
+  }//End output results
+}//End class
