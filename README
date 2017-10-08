@@ -1,0 +1,27 @@
+Java Parser for Principles
+
+Style errors to be checked.
+
+1 Optional Curly braces are required. For If, else and all loops (for, enhanced for, while, do-while) a single-statement should be surrounded by curly braces.
+
+Brace alignment - Whenever used, praces should be placed on a a line by themseles, both aliign with the first character for the block they enclose.
+
+Block indentation - Blocks should be indented three spaces more than their headers: Class bodies, method bodies, loop bodies, if-else bodies and instance declarations.
+
+Spaces around binary math operators (-,+,/,*,%). Exactly one space on both sides of the operator.
+
+Cse. Class names begin with uppercaseletter; method names begin with a lowercase lettter, constants are all uppercase. Camel Case is ignored.
+
+Exactly one blank line between methods. Also between the class header and declarations and between the end of the declarations and the first method header.
+
+Personal Errors to check
+
+Explicit Operator prescednece. Java operator precedence should be explicit, using parenthesis to surround the operation which takes precedence (Operations already in parenthesis are ignored)
+
+Multiple variable declarations not allowed. Variable Declarations should be on their own line.
+
+Output. Checker should report an output in the following format
+
+Style report by: Test program author: Error(s) checked:
+
+Sytle errors found Line x: Line x:
