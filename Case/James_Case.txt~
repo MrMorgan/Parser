@@ -7,7 +7,7 @@ AreA should only be corrected to areA, james_Case should be James_Case
 
 public class james_Case
 {
-   static final double pi = 3.14159 ;
+   static double pi = 3.14159 ;
 
    public static void main(String[] args)
    {

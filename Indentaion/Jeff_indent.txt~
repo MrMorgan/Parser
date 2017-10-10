@@ -1,9 +1,9 @@
+package gametestclass;
+
 /**
  * This is a test file with indentation errors.
  * Indentation errors: line 15, line 16, and line 34.
  */
-
-package gametestclass;
 
 import java.util.Objects;
 

@@ -1,26 +1,37 @@
 public class Line {
 
    private String line ;
-   private char[] words ;
+   private String[] words ;
    private int indentation ;             // indentation level, should be increased every time there is a new body
    private int lineNum ;                 // line num, the number of the current line being checked
    
    Line(String s, int number){
       line = s; 
-      words = line.toCharArray();
+      words = line.split("\\s+");
       lineNum = number;      
    }
    
    // Spaces around operators
    public boolean operators () {
         for(int i=0; i < line.length(); i++) {
+           // checks for unary operators
            if(line.charAt(i) == '*' || line.charAt(i) == '+' || line.charAt(i) == '-' || line.charAt(i) == '/') {
-              if(line.charAt(i-1) == ' ' && line.charAt(i+1) == ' ') {
+              // Makes sure they are only an operator
+              if(line.charAt(i+1) == '+' || line.charAt(i+1) == '=' || line.charAt(i+1) == '-' || line.charAt(i+1) == ';' || line.charAt(i+1) == '.') 
+              {
+                 return true; 
+              }
+              else if(line.charAt(i-1) == ' ' && line.charAt(i+1) == ' ') 
+              {
                  return true;
+              }
+              else
+              {
+                 return false;
               }
            }
         }
-        return false;
+        return true;
    }
    
    // Explicit Operator precedence
@@ -34,66 +45,111 @@ public class Line {
    // Class name case
    // Class names begin with an uppercase letter; method names begin with a lowercase letter, 
    // constants are all uppercase.  Camel case is ignored (and therefore underscores are ignored in constants).
-   public boolean caseNames () 
+   public boolean caseNames() 
    {
       
-      int locate = 0;               // location of the name declaration in line
-      boolean variable = isVariable();          // boolean whether it's a variable declaration
+      int locate = declared();               // location of the name declaration in line
       
-      for(int i=0; i < line.length() ; i++) 
-      { // Find the location of the name declaration
-         if(variable) 
+
+      
+      if(locate < 0)
+      {
+         return true;
+      }
+      
+      
+      if (words[locate].equals("class"))
+      {
+         locate++;
+         if(Character.isUpperCase(words[locate].charAt(0))) // Check first character of word after class
          {
-            if(words[0] == '=') { // If there is a space before =
-               locate = i-1;
-               break;
-            }
-            else {              // If there is not a space before =
-               locate = i;
-               break;
-            }
-            
+            return true;
          }
          else
          {
-            // If There is a space before the arguments, or class declaration
-            if(words[0] == '(' || words[( words.length - 1) ] == '{' || i == line.length()-1 ) { 
-               locate = i-1;
-               break;
-            }
-            else {                  // No space between method name and argument
-               locate = i;
-               break;
+            return false;
+         }                    
+      }
+      else if (words[locate].equals("final"))
+      {
+         while(!words[locate].contains("=") && !words[locate].contains(";")) // find '=' sign for declaration or end
+         {
+            locate++;
+         }
+         
+         if(words[locate].charAt(0) == '=' || words[locate].charAt(0) == ';') // check for space before '=' sign  
+         {
+         locate--;          // location of name
+         }
+         
+         String name = words[locate]; // name of constant
+         
+         for(int i = 0; i < name.length() && name.charAt(i) != '='; i++)
+         {
+            if(Character.isLowerCase(name.charAt(i)))
+            {
+               return false;
             }
          }
-
-      } // end for, word location set.
          
-      if(variable && words.length == 0) 
-      {
-         return Character.isLowerCase(words[locate]);
+         return true;       // name is all uppercase
+         
       }
-      else 
+      else if (words[locate].toLowerCase().equals("public") || words[locate].toLowerCase().equals("private") )
       {
-         return Character.isUpperCase(words[locate]);
-      }     
+         while(!words[locate].contains("(")) // find '=' sign for declaration
+         {
+            locate++;
+         }
+         
+         if(words[locate].charAt(0) == '(') // check for space before arguments 
+         {
+         locate--;          // location of name
+         }
+         
+         if(Character.isLowerCase(words[locate].charAt(0)))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+      
+         return true; // not a method, constant or class.
+      
    }
    
    
-   // Helper function to determine if line is a variable declaration or class/function declaration
-   private boolean isVariable() 
+   // Helper function to determine if line is a constant declaration or class/function declaration
+   private int declared() 
    {
-      if(words.length == 0)
+      int location = -1;
+      for(int i = 0; i < words.length; i++) 
       {
-         return false;
+         if(words[i].toLowerCase().equals("class"))
+         {
+            location = i;
+         }
+         else if(words[i].toLowerCase().equals("final"))
+         {
+            location =  i;
+         }
+         else if(words[i].toLowerCase().equals("public") || words[i].toLowerCase().equals("private") )
+         {
+           if(line.contains("="))
+            {
+               location =  -1;
+            }
+            else
+            {
+               location =  i;
+            }
+         }
       }
-      if(contains(';') || words[words.length -1 ] == ',') {
-         return true;
-      }
-      else 
-      {
-         return false;
-      }
+      
+      return location;
    }
    
    // Getters and Setters
@@ -110,7 +166,7 @@ public class Line {
       line = text;
    }
    
-   public String getLine() {
+   public String getText() {
       return line;
    }
    
@@ -129,9 +185,10 @@ public class Line {
 
    
    public boolean contains(char check) {
+      char[] chars = line.toCharArray();
       for(int i = 0; i < words.length; )
       {
-         if(words[i] == check ) 
+         if(chars[i] == check ) 
          {
             return true;
          }
@@ -140,5 +197,9 @@ public class Line {
       
       return false;
       
+   }
+   
+   public String[] getWords() {
+      return words;
    }
 }
