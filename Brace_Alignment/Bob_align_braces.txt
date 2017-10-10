@@ -1,11 +1,8 @@
 /*
 	Dong(Bob) Lee
-	09/10/17
 	Test programs for the braces alignment.
 */
-/*
-	All class and method definitions have open curly braces.
-*/
+
 class Node{
 
    Node next;
